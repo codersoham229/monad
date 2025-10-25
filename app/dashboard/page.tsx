@@ -30,6 +30,13 @@ export default function DashboardPage() {
       }
 
       const dashboardData = await response.json();
+      
+      // Redirect sellers to seller dashboard
+      if (dashboardData.role === 'seller') {
+        router.push('/seller');
+        return;
+      }
+      
       setData(dashboardData);
     } catch (error) {
       console.error('Error fetching dashboard data:', error);

@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createClient } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
   try {
+    const supabase = createClient();
     const { email, password } = await request.json();
 
     // Validate input

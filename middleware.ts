@@ -5,8 +5,8 @@ export function middleware(request: NextRequest) {
   // Check if user has session cookie
   const token = request.cookies.get('supabase-auth-token');
 
-  // If accessing dashboard without token, redirect to login
-  if (request.nextUrl.pathname.startsWith('/dashboard')) {
+  // If accessing dashboard or seller routes without token, redirect to login
+  if (request.nextUrl.pathname.startsWith('/dashboard') || request.nextUrl.pathname.startsWith('/seller')) {
     if (!token) {
       return NextResponse.redirect(new URL('/login', request.url));
     }
@@ -23,5 +23,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/login', '/signup'],
+  matcher: ['/dashboard/:path*', '/seller/:path*', '/login', '/signup'],
 };

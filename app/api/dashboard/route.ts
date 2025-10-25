@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 
 export async function GET(request: NextRequest) {
   try {
@@ -13,8 +13,21 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    // Create Supabase client with the auth token
+    const supabase = createSupabaseClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        global: {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      }
+    );
+
     // Get user from session
-    const { data: { user }, error: userError } = await supabase.auth.getUser(token);
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
 
     if (userError || !user) {
       return NextResponse.json(
