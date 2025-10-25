@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-blue-50 dark:from-slate-950 dark:via-purple-950 dark:to-slate-950 overflow-hidden">
@@ -14,12 +16,12 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 glass backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <div className="flex items-center gap-3 group cursor-pointer">
+            <Link href="/" className="flex items-center gap-3 group cursor-pointer">
               <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6">
                 <span className="text-white font-bold text-xl">AI</span>
               </div>
               <span className="text-2xl font-bold gradient-text">AIMM</span>
-            </div>
+            </Link>
             
             <div className="hidden md:flex items-center gap-8">
               <a href="#features" className="text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-all hover:scale-105 font-medium">
@@ -33,12 +35,23 @@ export default function Home() {
               </a>
             </div>
 
-            <button className="px-6 py-3 rounded-full gradient-bg text-white font-semibold btn-premium shadow-lg hover:shadow-xl hover:shadow-purple-500/50 hover:scale-105 transition-all flex items-center gap-2">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-              </svg>
-              Connect Wallet
-            </button>
+            <div className="flex items-center gap-3">
+              <Link 
+                href="/login"
+                className="px-5 py-2.5 rounded-full bg-white/80 dark:bg-slate-800/80 text-slate-900 dark:text-white font-semibold hover:bg-white dark:hover:bg-slate-700 transition-all hover:scale-105 border border-slate-200 dark:border-slate-700"
+              >
+                Login
+              </Link>
+              <Link 
+                href="/signup"
+                className="px-6 py-2.5 rounded-full gradient-bg text-white font-semibold btn-premium shadow-lg hover:shadow-xl hover:shadow-purple-500/50 hover:scale-105 transition-all flex items-center gap-2"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                </svg>
+                Get Started
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
@@ -48,8 +61,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-5xl mx-auto mb-20">
             <div className="inline-block mb-6">
-              <span className="px-5 py-2 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/40 dark:to-blue-900/40 text-purple-700 dark:text-purple-300 text-sm font-semibold backdrop-blur-sm border border-purple-200 dark:border-purple-800">
-                ⚡ Powered by Monad Blockchain
+              <span className="px-5 py-2 rounded-full bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/40 dark:to-blue-900/40 text-purple-700 dark:text-purple-300 text-sm font-semibold backdrop-blur-sm border border-purple-200 dark:border-purple-800 flex items-center gap-2 w-fit mx-auto">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Powered by Monad Blockchain
               </span>
             </div>
             
@@ -66,18 +82,24 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <button className="group w-full sm:w-auto px-10 py-5 rounded-full gradient-bg text-white font-bold text-lg btn-premium shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all flex items-center justify-center gap-3">
-                Explore Models
+              <Link 
+                href="/signup"
+                className="group w-full sm:w-auto px-10 py-5 rounded-full gradient-bg text-white font-bold text-lg btn-premium shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all flex items-center justify-center gap-3"
+              >
+                Get Started Free
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </button>
-              <button className="group w-full sm:w-auto px-10 py-5 rounded-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-lg border-2 border-purple-200 dark:border-purple-700 hover:border-purple-400 dark:hover:border-purple-500 hover:scale-105 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3">
-                List Your Model
-                <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </Link>
+              <Link 
+                href="/login"
+                className="group w-full sm:w-auto px-10 py-5 rounded-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-lg border-2 border-purple-200 dark:border-purple-700 hover:border-purple-400 dark:hover:border-purple-500 hover:scale-105 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+              >
+                Sign In
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                 </svg>
-              </button>
+              </Link>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -220,18 +242,24 @@ export default function Home() {
                 Whether you&apos;re a developer or user, AIMM is your gateway.
               </p>
               <div className="flex flex-col sm:flex-row gap-5 justify-center">
-                <button className="group px-10 py-5 rounded-full bg-white text-purple-600 font-bold text-lg hover:bg-slate-50 transition-all hover:scale-105 shadow-2xl flex items-center justify-center gap-3">
+                <Link 
+                  href="/signup"
+                  className="group px-10 py-5 rounded-full bg-white text-purple-600 font-bold text-lg hover:bg-slate-50 transition-all hover:scale-105 shadow-2xl flex items-center justify-center gap-3"
+                >
                   Start Building
                   <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </button>
-                <button className="group px-10 py-5 rounded-full bg-white/20 text-white font-bold text-lg border-2 border-white/40 hover:bg-white/30 transition-all hover:scale-105 backdrop-blur-sm flex items-center justify-center gap-3">
-                  View Documentation
-                  <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </Link>
+                <Link 
+                  href="/login"
+                  className="group px-10 py-5 rounded-full bg-white/20 text-white font-bold text-lg border-2 border-white/40 hover:bg-white/30 transition-all hover:scale-105 backdrop-blur-sm flex items-center justify-center gap-3"
+                >
+                  Sign In
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                   </svg>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
